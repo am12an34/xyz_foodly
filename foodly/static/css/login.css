@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.logo{
+    width: 12%;
+    margin: 2px 15px;
+}
 .container::before{
     content: "";
     background: url("../images/login_bg.png");
@@ -8,14 +12,14 @@
     width: 100%;
     top: 0;
     left: 0;
-    opacity: 0.6;
+    opacity: 0.4;
 }
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    height: 85vh;
 }
 .container h2{
     font-size: 2.5rem; 
