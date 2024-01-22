@@ -30,7 +30,8 @@
 .login-box{
     background-color: white;
     width: 25%;
-    box-shadow: 1px 1px 20px rgb(140, 137, 137);
+    /* box-shadow: 1px 1px 20px rgb(140, 137, 137); */
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     border-radius: 8px;
 }
 .login-box form{
