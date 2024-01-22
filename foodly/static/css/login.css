@@ -39,6 +39,12 @@
     margin: 40px 25px;
     font-family: 'Poppins', sans-serif;
 }
+.login-box form a{
+    color: #ff5630;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin: -10px auto;
+}
 .input-box{
     margin-bottom: 15px;
     height: 30px;
