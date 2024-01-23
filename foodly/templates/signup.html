@@ -11,18 +11,32 @@
     <div class="container">
         <h2>Sign up</h2>
         <div class="login-box">
-            <form method="post" onsubmit="">
+            <form method="post" onsubmit="return validateForm()">
                 <label class="input-label" for="email">Enter Your Email id</label>
                 <input class="input-box" type="email" id="email" required>
                 <label class="input-label" for="password">Enter Password</label>
                 <input class="input-box" type="password" id="password" required>
                 <label class="input-label" for="cnf-password">Confirm Password</label>
                 <input class="input-box" type="password" id="cnf-password" required>
-                <p style="color: red; font-size: 0.7rem; margin-top: -10px;" hidden>Password and Confirm Password must be same</p>
+                <p id="pass-err" style="color: red; font-size: 0.7rem; margin-top: -10px;" hidden>Password and Confirm Password must be same</p>
                 <button id="signup-button" class="btn">Sign up</button>
                 <a href="#">already have an account? login</a>
             </form>
         </div>
     </div>
+    <script>
+        function validateForm(){
+            let validate = true;
+            const password = document.getElementById("password").value;
+            const cnfPassword = document.getElementById("cnf-password").value;
+            const passErr = document.getElementById("pass-err");
+
+            if(password!=cnfPassword){
+                validate = false;
+                passErr.hidden = false;
+            }
+            return validate;
+        }
+    </script>
 </body>
 </html>
