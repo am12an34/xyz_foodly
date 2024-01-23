@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <title>Foodly | Home</title>
+</head>
+<body>
+    <div class="sidenav">
+        <img src="../static/images/foodly_logo.png" alt="" style="width: 70%; margin: 20px;">
+        <ul style="display: flex; flex-direction: column; padding-left: 0;">
+            <li class="sidenav-items">
+                <img src="../static/images/food-bowl.png" alt="">
+                <a href="#" style="margin-top: 9px;">Order Now</a>
+            </li>
+            <li class="sidenav-items">
+                <img src="../static/images/paper-bag.png" alt="" style="width: 10%; margin-left: 5px;">
+                <a href="#">Your Orders</a>
+            </li>
+            <li class="sidenav-items">
+                <img src="../static/images/delivery-boy.png" alt="" style="width: 12%; margin-left: 4px;">
+                <a href="#">Previous Orders</a>
+            </li>
+        </ul>
+    </div>
+    <div class="upper-navbar">
+        <nav>
+            <ul style="display: flex; justify-content: flex-end; margin: 5px 10px;">
+                <li class="uppernav-items">
+                    <a href="#">Home</a>
+                </li>
+                <li class="uppernav-items">
+                    <a href="#">About</a>
+                </li>
+                <li class="uppernav-items">
+                    <a href="#">Report</a>
+                </li>
+                <li class="uppernav-items">
+                    <a href="#">Help</a>
+                </li>
+                <div class="profile-pic-sec">
+                    <img src="../static/images/profile-pic.png" alt="" class="profile-pic" onclick="showDropdown()">
+                    <img id="drop-down-arrow" src="../static/images/drop-down.png" alt="" style="width: 10%; transform: translate(5px, -10px);" onclick="showDropdown()">
+                </div>
+            </ul>
+            <div id="dropdown-contents" class="dropdown-content">
+                <a href="#">Settings</a>
+                <a href="#">Logout</a>
+            </div>
+        </nav>
+    </div>
+    <script>
+        const showDropdown = ()=>{
+            const dropDown = document.getElementById("dropdown-contents");
+            
+            if(dropDown.style.display=="none"){
+                dropDown.style.display = "flex"
+            }else{
+                dropDown.style.display = "none"
+            }
+        }
+    </script>
+</body>
+</html>
