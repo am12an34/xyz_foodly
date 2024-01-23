@@ -17,7 +17,7 @@ def login():
 
 @app.route("/register")
 def register():
-    return render_template('register.html')
+    return render_template('signup.html')
 
 #--------------------------
 if __name__ == '__main__':
