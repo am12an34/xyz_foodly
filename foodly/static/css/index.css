@@ -10,7 +10,7 @@ body{
     align-items: center;
     max-width: 18%;
     background-color: #feefc6;
-    height: 95vh;
+    height: 100vh;
 }
 .sidenav-items:hover{
     background-color: #ffe5a6;
@@ -39,7 +39,8 @@ body{
     position: relative;
     float: right;
     width: 82%;
-    margin-top: -690px;
+    height: 30px;
+    margin-top: -720px;
 }
 .uppernav-items{
     list-style: none;
@@ -66,6 +67,10 @@ body{
     border-radius: 50%;
     border: 2px solid black;
 }
+.profile-pic:hover{
+    outline: 3px solid #f16c4c;
+    outline-offset: 2px;
+}
 .dropdown-content{
     transition: display 2s linear;
     display: none;
@@ -85,4 +90,12 @@ body{
     color: black;
     padding: 7px 5px;
     font-family: 'Poppins', sans-serif;
+}
+.content{
+    position: relative;
+    float: right;
+    margin-top: -660px;
+    width: 81%;
+    height: 89vh;
+    margin-right: 5px;
 }
