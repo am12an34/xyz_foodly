@@ -17,7 +17,8 @@ def login():
 
 @app.route("/register")
 def register():
-    return render_template('signup.html')
+    #condition for block_none
+    return render_template('signup.html',block_none="none")
 
 #--------------------------
 if __name__ == '__main__':
