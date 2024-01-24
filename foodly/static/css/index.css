@@ -9,8 +9,8 @@ body{
     top: 0;
     align-items: center;
     max-width: 18%;
-    background-color: #feefc6;
     height: 100vh;
+    border-right: 1px solid rgba(168, 168, 168, 0.406);
 }
 .sidenav-items:hover{
     background-color: #ffe5a6;
@@ -40,9 +40,11 @@ body{
 }
 .upper-navbar{
     position: fixed;
-    width: 100%;
-    height: 30px;
+    width: 82%;
+    height: 60px;
     top: 0;
+    right: 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .uppernav-items{
     list-style: none;
@@ -102,30 +104,18 @@ body{
     margin-right: 5px;
     overflow-y: scroll;
 }
-.rest-search::before{
-    content: "";
-    background: url("../images/search-box-bg.png");
-    position: absolute;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    opacity: 0.6;
-    background-repeat: repeat-x;
-}
 .rest-search{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 380px;
+    height: 100px;
 }
 .search-box-rest{
     border: 2px solid black;
     border-radius: 10px;
     padding: 5px 5px;
     height: 40px;
-    width: 80%;
+    width: 580px;
     margin-left: 80px;
 }
 .heading{

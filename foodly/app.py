@@ -21,7 +21,11 @@ def registration_required(f):
 
 @app.route("/")
 def index():
-    return redirect(url_for('login'))
+    return render_template('index.html') 
+
+@app.route("/resturants")
+def resturants():
+    return render_template('resturants.html') 
     
 @app.route("/login")
 @login_required
