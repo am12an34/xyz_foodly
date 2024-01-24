@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/f13ace78b9.js" crossorigin="anonymous"></script>
     <title>Foodly | Home</title>
 </head>
 <body>
@@ -11,7 +13,7 @@
         <img src="../static/images/foodly_logo.png" alt="" style="width: 70%; margin: 20px;">
         <ul style="display: flex; flex-direction: column; padding-left: 0;">
             <li class="sidenav-items">
-                <img src="../static/images/food-bowl.png" alt="">
+                <i class="fa-solid fa-bowl-food ico"></i>
                 <a href="#" style="margin-top: 9px;">Order Now</a>
             </li>
             <li class="sidenav-items">
@@ -26,7 +28,7 @@
     </div>
     <div class="upper-navbar">
         <nav>
-            <ul style="display: flex; justify-content: flex-end; margin: 5px 10px;">
+            <ul style="display: flex; justify-content: flex-end; margin: 15px 10px;">
                 <li class="uppernav-items">
                     <a href="#">Home</a>
                 </li>
@@ -51,7 +53,12 @@
         </nav>
     </div>
     <div class="content">
-        content
+        <div class="rest-search">
+            <div>
+                <input class="search-box-rest" type="text">
+                <img src="../static/images/search.png" alt="" style="width: 3%; transform: translate(-45px, 7px);">
+            </div>
+        </div>
     </div>
     <script>
         const showDropdown = ()=>{
