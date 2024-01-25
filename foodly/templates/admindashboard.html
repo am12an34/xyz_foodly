@@ -66,7 +66,7 @@
             <div class="item-pic-section">
                 <!-- <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt=""> -->
                 <canvas id= "canv1" ></canvas>
-                <p onclick="setItemImage()">choose picture</p>
+                <input type="file" multiple="false" accept="image/*" id=finput onchange="setItemImage()">
             </div>
             <form action="" class="add-menu-form">
                 <label for="item-name">Enter the name of the item</label>
@@ -178,15 +178,7 @@
 
             function setItemImage() {
                 var imgcanvas = document.getElementById("canv1");
-                const itemImg = document.getElementById("item-img");
-                let input = document.createElement('input');
-                input.type = 'file';
-                input.onchange = _ => {
-                    // you can use this method to get file and perform respective operations
-                            let files =   Array.from(input.files);
-                            files[0].drawTo(imgcanvas);
-                        };
-                input.click();
+                
   
             }
         </script>
