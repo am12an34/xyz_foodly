@@ -59,6 +59,8 @@ def resturantsinfo():
             return redirect(url_for('login'))
       
 @app.route("/login")
+
+    
 @app.route("/login",methods=['GET', 'POST'])
 @login_required
 def login():
@@ -70,7 +72,6 @@ def login():
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
             return redirect(url_for('index'))
-
         except:
             
             return render_template('login.html',block_none="block")
