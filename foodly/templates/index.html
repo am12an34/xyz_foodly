@@ -126,17 +126,18 @@
             const sendOrder = ()=>{
                 var dataList = [];
                 var data = {
-                    name: "",
+                    item: "",
                     quantity: "",
                     price: 0
                 }
                 const items = document.getElementsByClassName("plates-count");
                 for(let element of items){
-                    const itemName = element.parentNode.parentNode.parentNode.getAttribute("name");
-                    const itemQuantity = element.innerHTML;
-                    const itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[0]);
+                    console.log(element)
+                    let itemName = element.parentNode.parentNode.parentNode.getAttribute("name");
+                    let itemQuantity = element.innerHTML;
+                    let itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[0]);
                     if(itemQuantity!=0){
-                        data.name = itemName;
+                        data.item = itemName;
                         data.quantity = itemQuantity;
                         data.price = itemPrice*parseInt(itemQuantity);
                         dataList.push(data);

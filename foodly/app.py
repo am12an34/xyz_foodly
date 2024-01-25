@@ -26,7 +26,11 @@ def index():
 @app.route("/resturants")
 def resturants():
     return render_template('resturants.html') 
-    
+
+@app.route("/resturants/resturantinfo")
+def resturantsinfo():
+    return render_template('resturantinfo.html')
+  
 @app.route("/login")
 @login_required
 def login():

@@ -1,3 +1,6 @@
+.content h1{
+    font-family: 'Poppins', sans-serif;
+}
 .add-menu{
     display: flex;
     justify-content: center;
@@ -34,4 +37,7 @@
     width: 600px;
     margin-top: 5px;
     margin-bottom: 20px;
+}
+.menu-operation button{
+    margin: 2px 5px;
 }
