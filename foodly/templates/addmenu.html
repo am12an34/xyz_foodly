@@ -1,0 +1,90 @@
+{%extends "admindashboard.html"%}
+{%block content%}
+<h1>Add Menu</h1>
+        <div class="add-menu">
+            <div class="item-pic-section">
+                <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
+                <p onclick="setItemImage()">choose picture</p>
+                <div class="user-does-not-exists" style="display: {{ block_none }};">
+                    <p style="color: red; font-size: 0.7rem; margin-top: -10px;">image must be less than 100kb</p>
+                </div>
+            </div>
+            <form action="" method="post" class="add-menu-form">
+                <label for="item-name">Enter the name of the item</label>
+                <input type="text" id="item-name">
+                <label for="item-price">Enter the price of the item</label>
+                <input type="text" id="item-price">
+                <label for="item-description">Enter the description of the item</label>
+                <input type="text" id="item-description">
+                <button class="btn" style="background-color: #f16c4c; width: 20%; color: white;">Add Item</button>
+            </form>
+        </div>
+        <h1 style="margin: 20px 0px;">Menu List</h1>
+        <nav class="rest-inside-topnav">
+            <ul>
+                <li id="order-online" onclick="switchResInfo(event)">Menu</li>
+                <li id="review" onclick="switchResInfo(event)">Reviews</li>
+            </ul>
+        </nav>
+        <div class="show-rest-props">
+            <div class="order-online">
+                <div class="side-nav-menu-category">
+                    <ul>
+                        <li onclick="scrolltoItem('rolls')">Rolls</li>
+                        <li onclick="scrolltoItem('breads')">Breads</li>
+                        <li>Rice</li>
+                        <li>Noodles</li>
+                        <li>Main Course</li>
+                    </ul>
+                </div>
+                <div class="order-section">
+                    <h4>Order Now</h4>
+                    <div class="food-category" id="rolls">
+                        <h4>Rolls</h4>
+                        <div class="menu-item" name="eggroll">
+                            <img src="https://www.jessicagavin.com/wp-content/uploads/2018/01/egg-rolls-10-1200.jpg"
+                                alt="" class="food-image">
+                            <div class="item-info">
+                                <h5>Egg Roll</h5>
+                                <span>4.5 &#9734;</span>
+                                <p class="vote-count">200 votes</p>
+                                <p class="item-price">35 &#8377;</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, harum.</p>
+                            </div>
+                            <div class="menu-operation">
+                                <button type="button" class="btn btn-danger" onclick="location.reload()">Delete</button>
+                                <button type="button" class="btn btn-warning" onclick="location.reload()">Out of stock</button>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class="food-category" id="breads">
+                        <h4>Bread</h4>
+                        <div class="menu-item" name="paratha">
+                            <img src="https://www.jessicagavin.com/wp-content/uploads/2018/01/egg-rolls-10-1200.jpg"
+                                alt="" class="food-image">
+                            <div class="item-info">
+                                <h5>Paratha</h5>
+                                <span>4.5 &#9734;</span>
+                                <p class="vote-count">200 votes</p>
+                                <p class="item-price">10 &#8377;</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, harum.</p>
+                            </div>
+                            <div class="menu-operation">
+                                <button type="button" class="btn btn-danger">Delete</button>
+                                <button type="button" class="btn btn-warning">Out of stock</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <h4>The John's Reviews</h4>
+                <div class="review-msg">
+                    <h5>Mr. Hamilton</h5>
+                    <span>5 &#9734;</span>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                </div>
+            </div>
+
+
+{%endblock%}

@@ -49,6 +49,9 @@ body{
     right: 0;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.upper-navbar li{
+    margin: 0px 20px;
+}
 .uppernav-items{
     list-style: none;
     display: flex;
@@ -144,9 +147,6 @@ body{
 }
 .dropdown{
     margin-bottom: 20px;
-}
-.btn:focus{
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .dropdown-menu li:hover{
     cursor: pointer;
@@ -307,9 +307,6 @@ body{
     border-radius: 5px;
     color: white;
 }
-.dropdown-content{
-    cursor: pointer;
-}
 .card{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
@@ -323,4 +320,21 @@ body{
     background-color: green;
     border-radius: 5px;
     color: white;
+    margin: 15px 0px;
+}
+.btn:focus{
+    box-shadow: none;
+}
+.dropdown-item:hover{
+    cursor: pointer;
+}
+.ico-black{
+    scale: 1.5;
+    margin: 12px 2px;
+    transform: translate(-15px, 0px);
+    cursor: pointer;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
 }
