@@ -64,7 +64,8 @@
         <h1>Add Menu</h1>
         <div class="add-menu">
             <div class="item-pic-section">
-                <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
+                <!-- <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt=""> -->
+                <canvas id= "canv1" ></canvas>
                 <p onclick="setItemImage()">choose picture</p>
             </div>
             <form action="" class="add-menu-form">
@@ -183,16 +184,12 @@
                     // you can use this method to get file and perform respective operations
                             let files =   Array.from(input.files);
                             itemImg.src = files[0];
-                            console.log(files[0])
+                            console.log(files[0]);
                         };
                 input.click();
   
             }
         </script>
 </body>
-<<<<<<< HEAD
 
 </html>
-=======
-</html>
->>>>>>> f7db0c69822915ecb914e0d8e3a25beba7d827ec

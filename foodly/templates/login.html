@@ -14,6 +14,9 @@
             <form method="post" action="">
                 <label class="input-label" for="email">Enter Your Email id</label>
                 <input class="input-box" type="email" id="email" required>
+                <div class="user-does-not-exists" style="display: {{ block_none }};">
+                    <p style="color: red; font-size: 0.7rem; margin-top: -10px;">User does not exist</p>
+                </div>
                 <label class="input-label" for="password">Enter Password</label>
                 <input class="input-box" type="password" id="password" required>
                 <button class="btn">Login</button>
