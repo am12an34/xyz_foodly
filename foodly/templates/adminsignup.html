@@ -14,7 +14,7 @@
             <form method="post" onsubmit="return validateForm()">
                 <label class="input-label" for="email">Enter Your Email id</label>
                 <input class="input-box" type="email" id="email" required>
-                <div >
+                <div style="display: {{ block_none }};">
                     <p style="color: red; font-size: 0.7rem; margin-top: -10px;">User already exist</p>
                 </div>
                 <label class="input-label" for="resturant-name">Enter Your Resturant's Name</label>
@@ -47,4 +47,4 @@
     </script>
 </body>
 </html>
-<!-- style="display: {{ block_none }};" -->
+
