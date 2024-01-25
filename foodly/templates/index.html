@@ -14,7 +14,9 @@
 
 <body>
     <div class="sidenav">
-        <img src="../static/images/foodly_logo.png" alt="" style="width: 70%; margin: 20px;">
+        <a href="/resturants" >
+            <img src="../static/images/foodly_logo.png" alt="" style="width: 70%; margin: 20px;">
+        </a>
         <ul style="display: flex; flex-direction: column; padding-left: 0; width: 100%;">
             <li class="sidenav-items">
                 <i class="fa-solid fa-bowl-food ico"></i>
@@ -132,15 +134,13 @@
                 }
                 const items = document.getElementsByClassName("plates-count");
                 for(let element of items){
-                    console.log(element)
                     let itemName = element.parentNode.parentNode.parentNode.getAttribute("name");
+                    console.log(itemName)
                     let itemQuantity = element.innerHTML;
                     let itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[0]);
                     if(itemQuantity!=0){
-                        data.item = itemName;
-                        data.quantity = itemQuantity;
-                        data.price = itemPrice*parseInt(itemQuantity);
-                        dataList.push(data);
+                        var new_data = {...data , ...{item: itemName, quantity: itemQuantity, price: itemPrice}}
+                        dataList.push(new_data);
                     }
                 }
                 console.log(JSON.stringify(dataList));
