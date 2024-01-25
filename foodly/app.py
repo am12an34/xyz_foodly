@@ -34,10 +34,13 @@ def registration_required(f):
     return decorated_function
 
 #----------------------------------------------------
+@app.route("/landing")
+def landing():
+        return render_template('landingpage.html') 
 @app.route("/")
 def index():
     if "user" in session:
-        return render_template('index.html') 
+        return render_template('resturants.html') 
     else:
         return redirect(url_for('login'))
 
@@ -55,7 +58,6 @@ def resturantsinfo():
         else:
             return redirect(url_for('login'))
       
-@app.route("/login")
 
     
 @app.route("/login",methods=['GET', 'POST'])
@@ -68,6 +70,7 @@ def login():
         try:
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
+            print(session['user'])
             return redirect(url_for('index'))
         except:
             
@@ -92,7 +95,9 @@ def register():
             return render_template('register.html',block_none="block")
 
     return render_template('register.html',block_none="none")
-
+@app.route("/resturantsregister")
+def landing():
+        return render_template('adminsignup.html') 
 @app.route('/logout')
 def logout():
 
