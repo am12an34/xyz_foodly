@@ -42,7 +42,7 @@ def index():
     if "user" in session:
         return render_template('resturants.html') 
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('landing'))
 
 @app.route("/resturants")
 def resturants():
@@ -96,7 +96,7 @@ def register():
 
     return render_template('register.html',block_none="none")
 @app.route("/resturantsregister")
-def landing():
+def resturantsregister():
         return render_template('adminsignup.html') 
 @app.route('/logout')
 def logout():
