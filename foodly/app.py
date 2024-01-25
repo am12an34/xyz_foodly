@@ -50,9 +50,6 @@ def resturants():
 
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
-        if user in session:
-            return render_template('resturantinfo.html')
-  
         if "user" in session:
             return render_template('resturantinfo.html')
         else:

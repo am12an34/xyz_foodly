@@ -33,31 +33,30 @@
         </ul>
     </div>
     <div class="upper-navbar">
-        <nav>
-            <ul style="display: flex; justify-content: flex-end; margin: 15px 10px;">
-                <li class="uppernav-items">
-                    <a href="#">Home</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">About</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">Report</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">Help</a>
-                </li>
-                <div class="profile-pic-sec">
-                    <img src="../static/images/profile-pic.png" alt="" class="profile-pic" onclick="showDropdown()">
-                    <img id="drop-down-arrow" src="../static/images/drop-down.png" alt=""
-                        style="width: 10%; transform: translate(5px, -10px);" onclick="showDropdown()">
-                </div>
-            </ul>
-            <div id="dropdown-contents" class="dropdown-content">
-                <a href="#">Settings</a>
-                <a href="#">Logout</a>
+        <ul style="display: flex; justify-content: flex-end; margin: 15px 10px;">
+            <li class="uppernav-items">
+                <a href="#">Home</a>
+            </li>
+            <li class="uppernav-items">
+                <a href="#">About</a>
+            </li>
+            <li class="uppernav-items">
+                <a href="#">Report</a>
+            </li>
+            <li class="uppernav-items">
+                <a href="#">Help</a>
+            </li>
+            <div class="profile-pic-sec">
+                <img src="../static/images/profile-pic.png" alt="" class="profile-pic" onclick="showDropdown()">
+                <img id="drop-down-arrow" src="../static/images/drop-down.png" alt=""
+                    style="width: 10%; transform: translate(5px, -10px);" onclick="showDropdown()">
             </div>
-        </nav>
+        </ul>
+        <div id="dropdown-contents" class="dropdown-content">
+            <a href="#">Settings</a>
+            <a href="/logout">Logout</a>
+        </div>
+        
     </div>
     <div class="content">
         {%block content%}

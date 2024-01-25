@@ -298,3 +298,24 @@ body{
     border-radius: 5px;
     color: white;
 }
+.dropdown-content{
+    cursor: pointer;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.card:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.card-body{
+    display: flex;
+    flex-direction: column;
+}
+.rating-span{
+    max-width: 20%;
+    padding: 1px 8px;
+    font-size: 0.8rem;
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+}
