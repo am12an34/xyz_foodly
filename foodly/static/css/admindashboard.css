@@ -1,0 +1,37 @@
+.add-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+.add-menu-form{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 30px;
+}
+.item-pic-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+.item-pic-section p{
+    color: #f16c4c;
+    cursor: pointer;
+    margin: 5px 2px;
+}
+.item-pic-section p:hover{
+    text-decoration: underline;
+}
+.item-pic{
+    width: 25%;
+}
+.add-menu-form input{
+    width: 600px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}

@@ -15,6 +15,9 @@ body{
 .sidenav-items:hover{
     background-color: aliceblue;
 }
+.sidenav-items a:hover{
+    color: #f0643e;
+}
 .sidenav-items{
     list-style: none;
     display: flex;
