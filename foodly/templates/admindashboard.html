@@ -177,14 +177,14 @@
             }
 
             function setItemImage() {
+                var imgcanvas = document.getElementById("canv1");
                 const itemImg = document.getElementById("item-img");
                 let input = document.createElement('input');
                 input.type = 'file';
                 input.onchange = _ => {
                     // you can use this method to get file and perform respective operations
                             let files =   Array.from(input.files);
-                            itemImg.src = files[0];
-                            console.log(files[0]);
+                            files[0].drawTo(imgcanvas);
                         };
                 input.click();
   

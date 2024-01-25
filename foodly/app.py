@@ -46,7 +46,7 @@ def resturants():
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
         if user in session:
-        return render_template('resturantinfo.html')
+            return render_template('resturantinfo.html')
   
 @app.route("/login")
 @login_required
