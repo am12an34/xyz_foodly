@@ -60,7 +60,6 @@
     <div class="content">
         {%block content%}
         {%endblock%}
-        
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -88,7 +87,6 @@
 
             const addOrReduce = (operation, event) => {
                 const platesCountShow = event.target.parentNode.querySelector("#plates-count")
-                console.log(event.target.parentNode.querySelector("#plates-count"))
                 var plates = parseInt(platesCountShow.innerHTML);
                 if (operation == "+") {
                     plates = plates + 1;
@@ -103,24 +101,48 @@
 
             }
 
-            const switchResInfo = (event)=>{
+            const switchResInfo = (event) => {
                 const overview = document.querySelector(".overview");
                 const orderOnline = document.querySelector(".order-online");
                 const review = document.querySelector(".review");
 
-                if(event.target.id == "overview"){
+                if (event.target.id == "overview") {
                     overview.style.display = "block";
                     orderOnline.style.display = "none";
                     review.style.display = "none";
-                }else if(event.target.id == "order-online"){
+                } else if (event.target.id == "order-online") {
                     overview.style.display = "none";
                     orderOnline.style.display = "block";
                     review.style.display = "none";
-                }else if(event.target.id == "review"){
+                } else if (event.target.id == "review") {
                     overview.style.display = "none";
                     orderOnline.style.display = "none";
                     review.style.display = "block";
                 }
+            }
+
+            
+            // const items = document.getElementsByClassName("plates-count");
+            const sendOrder = ()=>{
+                var dataList = [];
+                var data = {
+                    name: "",
+                    quantity: "",
+                    price: 0
+                }
+                const items = document.getElementsByClassName("plates-count");
+                for(let element of items){
+                    const itemName = element.parentNode.parentNode.parentNode.getAttribute("name");
+                    const itemQuantity = element.innerHTML;
+                    const itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[0]);
+                    if(itemQuantity!=0){
+                        data.name = itemName;
+                        data.quantity = itemQuantity;
+                        data.price = itemPrice*parseInt(itemQuantity);
+                        dataList.push(data);
+                    }
+                }
+                console.log(JSON.stringify(dataList));
             }
 
         </script>
