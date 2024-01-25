@@ -35,19 +35,25 @@ def registration_required(f):
 #----------------------------------------------------
 @app.route("/")
 def index():
-    if user in session:
+    if "user" in session:
         return render_template('index.html') 
+    else:
+        return redirect(url_for('login'))
 
 @app.route("/resturants")
 def resturants():
-    if user in session:
+    if "user" in session:
         return render_template('resturants.html') 
+    else:
+        return redirect(url_for('login'))
 
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
-        if user in session:
-        return render_template('resturantinfo.html')
-  
+        if "user" in session:
+            return render_template('resturantinfo.html')
+        else:
+            return redirect(url_for('login'))
+      
 @app.route("/login")
 @login_required
 def login():
