@@ -1,4 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body{
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
 .nav-menu-landing:hover{
     cursor: pointer;
     color: #f0643e;
+}
+.order-now{
+    cursor: pointer;
+    padding: 10px 10px;
+    color: white;
+    background-color: rgb(251 146 60);
+    border: 2px solid rgb(251 146 60);
+}
+.order-now:hover{
+    border: 2px solid #f0643e;
+    background-color: white;
+    color: black;
 }

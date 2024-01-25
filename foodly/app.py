@@ -97,7 +97,7 @@ def register():
     return render_template('register.html',block_none="none")
 @app.route("/resturantsregister")
 def resturantsregister():
-        return render_template('adminsignup.html') 
+        return render_template('adminsignup.html', block_none="none") 
 @app.route('/logout')
 def logout():
 
