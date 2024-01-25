@@ -79,7 +79,6 @@ body{
     outline-offset: 2px;
 }
 .dropdown-content{
-    transition: display 2s linear;
     display: none;
     flex-direction: column;
     float: right;
@@ -90,6 +89,7 @@ body{
     width: 150px;
     height: 90px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    z-index: 10;
 }
 .dropdown-content a{
     margin: auto;
@@ -97,6 +97,9 @@ body{
     color: black;
     padding: 7px 5px;
     font-family: 'Poppins', sans-serif;
+}
+.dropdown-contents a:hover{
+    cursor: pointer !important;
 }
 .content{
     position: relative;
@@ -129,9 +132,6 @@ body{
     margin-left: 15px;
     margin-top: 30px;
 }
-.btn:hover{
-    background-color: #ff633c;
-}
 .resturants{
     margin: 40px 10px;
 }
@@ -141,6 +141,12 @@ body{
 }
 .rest-search-ico{
     transform: translate(-35px, 0px);
+}
+.dropdown{
+    margin-bottom: 20px;
+}
+.btn:focus{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .rest-prof-img{
     max-width: fit-content;
