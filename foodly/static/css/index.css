@@ -307,12 +307,8 @@ body{
 .card:hover{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.card-body{
-    display: flex;
-    flex-direction: column;
-}
 .rating-span{
-    max-width: 20%;
+    max-width: 19%;
     padding: 1px 8px;
     font-size: 0.8rem;
     background-color: green;
