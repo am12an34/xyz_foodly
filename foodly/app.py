@@ -49,22 +49,13 @@ def resturants():
 
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
-<<<<<<< HEAD
-        if user in session:
-            return render_template('resturantinfo.html')
-  
-=======
->>>>>>> 082e8d9f2678a50d415365cdec0976334c34a075
         if "user" in session:
             return render_template('resturantinfo.html')
         else:
             return redirect(url_for('login'))
-      
-<<<<<<< HEAD
-@app.route("/login")
-=======
+
+    
 @app.route("/login",methods=['GET', 'POST'])
->>>>>>> 082e8d9f2678a50d415365cdec0976334c34a075
 @login_required
 def login():
     if request.method == 'POST':
@@ -75,7 +66,6 @@ def login():
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
             return redirect(url_for('index'))
-
         except:
             
             return render_template('login.html',block_none="block")
