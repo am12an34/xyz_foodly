@@ -1,6 +1,7 @@
 from flask import*
 import pyrebase
 from functools import wraps
+#from adminapp import register
 app = Flask(__name__)
 
 app.secret_key = 'Fo**-+8/'
@@ -37,26 +38,40 @@ def registration_required(f):
 @app.route("/landing")
 def landing():
         return render_template('landingpage.html') 
+
+
 @app.route("/")
 def index():
-    if "user" in session:
-        return render_template('resturants.html') 
+    if session['admin'] == False:
+        if "user" in session:
+            return render_template('resturants.html') 
+        else:
+            return redirect(url_for('landing'))
     else:
         return redirect(url_for('landing'))
 
+
+
 @app.route("/resturants")
 def resturants():
-    if "user" in session:
-        return render_template('resturants.html') 
+    if session['admin'] == False:
+        if "user" in session:
+            return render_template('resturants.html') 
+        else:
+            return redirect(url_for('login'))
     else:
-        return redirect(url_for('login'))
+        return redirect(url_for('landing'))
+
 
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
+    if session['admin'] == False:
         if "user" in session:
             return render_template('resturantinfo.html')
         else:
             return redirect(url_for('login'))
+    else:
+        return redirect(url_for('landing'))
       
 
     
@@ -78,6 +93,7 @@ def login():
 
     return render_template('login.html',block_none="none")
 
+
 @app.route("/register",methods=['GET', 'POST'])
 @registration_required
 def register():
@@ -89,20 +105,77 @@ def register():
             user = Auth.create_user_with_email_and_password(email, password)
             print(user)
             session['user'] = user['localId']  
+            session['admin'] = False
             return redirect(url_for('index'))
 
         except :
             return render_template('register.html',block_none="block")
 
     return render_template('register.html',block_none="none")
-@app.route("/resturantsregister")
+
+#-----------------------------------------------------------------------
+@app.route("/resturantsdashboard/addmenu")
+def resturantaddmenu():
+
+    if session['admin'] == True:     
+        if "user" in session:
+            return render_template('addmenu.html') 
+        else:
+            return redirect(url_for('landing'))
+    else:
+        return redirect(url_for('landing'))
+
+@app.route("/resturantsdashboard")
+def resturantindex():
+
+    if session['admin'] == True:     
+        if "user" in session:
+            return render_template('resturantsdashboard.html') 
+        else:
+            return redirect(url_for('landing'))
+    else:
+        return redirect(url_for('landing'))
+
+
+@app.route("/resturantsregister",methods=['GET', 'POST'])
 def resturantsregister():
-        return render_template('adminsignup.html', block_none="none") 
+        if request.method == 'POST':
+                email = "admin."+request.form['email']
+                password = request.form['password']
+                try:
+                    user = Auth.create_user_with_email_and_password(email, password)
+                    print(user)
+                    session['user'] = user['localId']
+                    session['admin'] = True
+                    return redirect(url_for('resturantindex'))
+                except :
+                    return render_template('resturantsregister.html',block_none="block")
+
+        return render_template('resturantsregister.html',block_none="none")
+
+@app.route("/resturantslogin",methods=['GET', 'POST'])
+def resturantslgoin():
+        if request.method == 'POST':
+                email = "admin."+request.form['email']
+                password = request.form['password']
+                print(email)
+                print(password)
+                try:
+                    user = Auth.sign_in_with_email_and_password(email, password)
+                    session['user'] = user['localId']
+                    session['admin'] = True
+                    return redirect(url_for('resturantindex'))
+                except :
+                    return render_template('resturantslogin.html',block_none="block")
+
+        return render_template('resturantslogin.html',block_none="none")
+#-----------------------------------------------------------------------
+
 @app.route('/logout')
 def logout():
 
     session.pop('user', None)
-    return redirect(url_for('login'))
+    return redirect(url_for('landing'))
 
 @app.after_request
 def add_no_cache(response):
