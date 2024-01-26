@@ -394,3 +394,40 @@ body{
 .card{
     font-family: 'Poppins', sans-serif;
 }
+.profile-section{
+    margin: 10px 10px;
+    padding: 40px 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.profile-pic-section{
+    border-radius: 50%;
+    border: 2px solid gray;
+    width: 180px;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    margin: 5px 30px;
+}
+.profile-user-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: auto;
+}
+.profile-edit{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-edit button{
+    color: white;
+    width: 20%;
+    height: fit-content;
+    background-color: #ff633c;
+}
