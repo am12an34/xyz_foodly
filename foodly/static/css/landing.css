@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body{
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 .nav-menu-landing:hover{
     cursor: pointer;
@@ -18,4 +18,32 @@ body{
     border: 2px solid #f0643e;
     background-color: white;
     color: black;
+}
+.footer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin: 20px 80px;
+}
+.footer-contents{
+    margin: 30px 30px;
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(157, 157, 157, 0.669);
+    padding: 20px 10px;
+}
+.learn-more li{
+    cursor: pointer;
+}
+.about-foodly li{
+    cursor: pointer;
+}
+.social-links ul{
+    display: flex;
+}
+.social-links ul li{
+    margin: 5px 10px;
+    cursor: pointer;
 }
