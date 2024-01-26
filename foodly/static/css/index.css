@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 body{
     overflow: hidden;
+    font-family: 'Poppins', sans-serif;
 }
 .sidenav{
     display: flex;
@@ -107,7 +108,7 @@ body{
 .content{
     position: relative;
     float: right;
-    margin-top: -660px;
+    margin-top: -620px;
     width: 81%;
     height: 89vh;
     margin-right: 5px;
