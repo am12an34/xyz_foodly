@@ -391,3 +391,6 @@ body{
     justify-content: space-between;
     margin: 10px 10px;
 }
+.card{
+    font-family: 'Poppins', sans-serif;
+}
