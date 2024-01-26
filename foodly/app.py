@@ -42,13 +42,10 @@ def landing():
 
 @app.route("/")
 def index():
-    if session['admin'] == False:
         if "user" in session:
             return render_template('resturants.html') 
         else:
             return redirect(url_for('landing'))
-    else:
-        return redirect(url_for('landing'))
 
 
 
@@ -62,6 +59,15 @@ def resturants():
     else:
         return redirect(url_for('landing'))
 
+@app.route("/yourorders")
+def yourorders():
+    if session['admin'] == False:
+        if "user" in session:
+            return render_template('yourorders.html') 
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect(url_for('landing'))
 
 @app.route("/resturants/resturantinfo")
 def resturantsinfo():
@@ -85,7 +91,7 @@ def login():
         try:
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
-            session['admin'] = True
+            session['admin'] = False
             print(session['user'])
             return redirect(url_for('index'))
         except:
@@ -188,3 +194,4 @@ def add_no_cache(response):
 #----------------------------------------------------
 if __name__ == '__main__':
     app.run(debug=True)
+
