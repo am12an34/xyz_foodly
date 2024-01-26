@@ -85,6 +85,7 @@ def login():
         try:
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
+            session['admin'] = True
             print(session['user'])
             return redirect(url_for('index'))
         except:
