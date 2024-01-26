@@ -19,7 +19,7 @@
         <ul style="display: flex; flex-direction: column; padding-left: 0; width: 100%;">
             <li class="sidenav-items">
                 <i class="fa-regular fa-clipboard ico"></i>
-                <a href="/resturants" style="margin-top: 9px;">Add Menu</a>
+                <a href="/resturantsdashboard/addmenu" style="margin-top: 9px;">Add Menu</a>
             </li>
             <li class="sidenav-items">
                 <i class="fa-solid fa-bowl-rice ico"></i>
@@ -32,31 +32,18 @@
         </ul>
     </div>
     <div class="upper-navbar">
-        <nav>
-            <ul style="display: flex; justify-content: flex-end; margin: 15px 10px;">
-                <li class="uppernav-items">
-                    <a href="#">Home</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">About</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">Report</a>
-                </li>
-                <li class="uppernav-items">
-                    <a href="#">Help</a>
-                </li>
-                <div class="profile-pic-sec">
-                    <img src="../static/images/profile-pic.png" alt="" class="profile-pic" onclick="showDropdown()">
-                    <img id="drop-down-arrow" src="../static/images/drop-down.png" alt=""
-                        style="width: 10%; transform: translate(5px, -10px);" onclick="showDropdown()">
+        <ul style="display: flex; justify-content: flex-end; margin: 5px 10px; list-style: none;">
+            <li>
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 90px; box-shadow: none;"><img src="../static/images/profile-pic.png" alt="" class="profile-pic" style="width: 50%;"></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <li><a class="dropdown-item" href="#">See Profile</a></li>
+                      <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                    </ul>
                 </div>
-            </ul>
-            <div id="dropdown-contents" class="dropdown-content">
-                <a href="#">Settings</a>
-                <a href="/logout">Logout</a>
-            </div>
-        </nav>
+            </li>
+            <li><i class="fa-regular fa-bell ico-black"></i></li>
+        </ul>
     </div>
     <div class="content">
         {%block content%}
