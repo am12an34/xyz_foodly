@@ -53,8 +53,53 @@
         
     </div>
     <div class="content">
-        {%block content%}
-        {%endblock%}
+        <!-- {%block content%}
+        {%endblock%} -->
+        <h1 style="font-family: 'Poppins', sans-serif; margin: 25px;">Orders</h1>
+        <div class="active-order">
+            <div class="resturant-name-sec">
+                <div class="res-info-active-order">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipMidEEqczw-JoRCZt2kRZmkHrM6SrvGQe1OuCry=s1360-w1360-h1020" alt="" style="width: 10%; border-radius: 5px;">
+                    <div style="margin: 5px 20px;">
+                        <h3 style="font-family: 'Poppins', sans-serif;">John Resturant</h3>
+                        <p style="font-family: 'Poppins', sans-serif;">NIT Agartala, Jirania</p>
+                    </div>
+                </div>
+                <div style="margin: 10px 20px;">
+                    <span class="badge bg-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Track</span>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Order Status</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              Resturant is preparing your order
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #ff633c; color: white;">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="order-info">
+                <div class="item-list">
+                    <p>1 X Egg Roll</p>
+                    <p>5 X Paratha</p>
+                </div>
+                <div class="item-price-list">
+                    <p>&#8377; 35</p>
+                    <p>&#8377; 50</p>
+                </div>
+            </div>
+            <div class="item-total">
+                <div class="item-list"><p>Total</p></div>
+                <div class="item-price-list"><p>&#8377; 85</p></div>
+            </div>
+        </div>
     </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -130,7 +175,7 @@
                     let itemName = element.parentNode.parentNode.parentNode.getAttribute("name");
                     console.log(itemName)
                     let itemQuantity = element.innerHTML;
-                    let itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[0]);
+                    let itemPrice = parseInt(element.parentNode.parentNode.parentNode.querySelector(".item-info").querySelector(".item-price").innerHTML.split(" ")[1]);
                     if(itemQuantity!=0){
                         var new_data = {...data , ...{item: itemName, quantity: itemQuantity, price: itemPrice}}
                         dataList.push(new_data);

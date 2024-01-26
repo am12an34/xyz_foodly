@@ -339,3 +339,55 @@ body{
     display: flex;
     flex-direction: column;
 }
+.active-order{
+    display: flex;
+    width: 95%;
+    flex-direction: column;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 15px 20px;
+    margin: auto;
+}
+.resturant-name-sec{
+    margin: 10px 10px;
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid rgba(155, 155, 155, 0.637);
+    padding: 20px 5px;
+}
+.resturant-name-sec span{
+    height: fit-content;
+}
+.resturant-name-sec span:hover{
+    cursor: pointer;
+}
+.res-info-active-order{
+    display: flex;
+    
+}
+.order-info{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px 10px;
+    border-bottom: 1px solid rgba(155, 155, 155, 0.637);
+}
+.item-price-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.item-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.item-total{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 10px;
+}
