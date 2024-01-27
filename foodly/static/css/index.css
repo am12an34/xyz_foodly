@@ -315,7 +315,7 @@ body{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .rating-span{
-    max-width: 19%;
+    max-width: 20%;
     padding: 1px 8px;
     font-size: 0.8rem;
     background-color: green;
@@ -435,6 +435,9 @@ body{
     display: flex;
     flex-direction: column;
     margin: 10px 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 10px;
+    padding: 20px 30px;
 }
 .order-analysis{
     display: flex;
