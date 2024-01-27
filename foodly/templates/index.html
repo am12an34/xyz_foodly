@@ -137,9 +137,15 @@
                         dataList.push(new_data);
                     }
                 }
+                fetch('/resturants/resturantinfo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dataList)
+                })
                 console.log(JSON.stringify(dataList));
             }
-
         </script>
 </body>
 
