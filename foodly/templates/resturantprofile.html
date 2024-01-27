@@ -23,10 +23,10 @@
                 <form method="POST">
                   <div class="upload-profile-pic">                    
                     <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-                    <p onclick="setItemImage()">choose picture</p>
+                    <input type="file" name="image" id="img-inp">
                   </div>  
                   <div class="edit-info">
-                    <input type="text" id="img-url" hidden>
+                    <input type="text" id="img-url" name="image" >
                     <label for="username">Name</label>
                     <input type="text" id="username" value={{resturantname}}>
                     <label for="username">Phone</label>
@@ -46,15 +46,16 @@
         function setItemImage() {
             const itemImg = document.getElementById("item-img");
             const imgUrlSpace = document.getElementById("img-url");
-            let input = document.createElement('input');
-            input.type = 'file';
+            // let input = document.createElement('input');
+            const input = document.getElementById("img-inp");
+            // input.type = 'file';
             input.onchange = _ => {
                 // you can use this method to get file and perform respective operations
                         let files =   Array.from(input.files);
-                        itemImg.src = URL.createObjectURL(files[0]);
-                        imgUrlSpace.value = URL.createObjectURL(files[0]);
+                        var url = URL.createObjectURL(files[0]);
+                        itemImg.src = url;
                     };
-            input.click();
+            // input.click();
 
         }
     </script>
