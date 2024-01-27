@@ -543,14 +543,11 @@ body{
     border-radius: 10px;
     border: 1px solid rgba(142, 142, 142, 0.546);
 }
-.resturant-pic-request{
-    margin: 5px 5px;
-}
 .resturant-info-request{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 5px 5px;
+    margin: 10px 10px;
     width: 100%;
 }
 .resturant-info-request h2{
@@ -560,6 +557,7 @@ body{
 .resturant-action-request{
     display: flex;
     align-items: center;
+    margin: 10px 10px;
 }
 .resturant-action-request button{
     height: fit-content;
