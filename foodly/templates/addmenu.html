@@ -4,12 +4,15 @@
         <div class="add-menu">
             <div class="item-pic-section">
                 <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-                <p onclick="setItemImage()">choose picture</p>
+                <!-- <p onclick="setItemImage()">choose picture</p> -->
+                <br>
                 <div class="user-does-not-exists" style="display: {{ block_none }};">
                     <p style="color: red; font-size: 0.7rem; margin-top: -10px;">image must be less than 100kb</p>
                 </div>
             </div>
             <form action="" method="post" class="add-menu-form">
+                <label for="img-inp">Upload Menu Image</label>
+                <input type="file" name="file" id="img-inp" accept="image/*" required>
                 <label for="item-name">Enter the name of the item</label>
                 <input type="text" id="item-name">
                 <label for="item-price">Enter the price of the item</label>
@@ -85,7 +88,6 @@
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
                 </div>
             </div>
-            
 
 
 {%endblock%}

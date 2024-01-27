@@ -22,11 +22,15 @@
                 <div class="modal-body">
                   <div class="upload-profile-pic">
                     <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-                    <p onclick="setItemImage()">choose picture</p>
                   </div>  
                   <div class="edit-info">
-                    <label for="username">Name</label>
-                    <input type="text" id="username">
+                    <form><center>
+                        <input type="file" name="file" accept="image/*" id="img-inp">
+                        </center>
+                        <label for="username">Name</label>
+                        <input type="text" id="username" name="username">
+
+                    </form>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -38,17 +42,11 @@
           </div>
     </div>
     <script>
-        function setItemImage() {
             const itemImg = document.getElementById("item-img");
-            let input = document.createElement('input');
-            input.type = 'file';
+            let input = document.getElementById("img-inp");
             input.onchange = _ => {
-                // you can use this method to get file and perform respective operations
                         let files =   Array.from(input.files);
                         itemImg.src = URL.createObjectURL(files[0]);
                     };
-            input.click();
-
-        }
     </script>
 {%endblock%}    

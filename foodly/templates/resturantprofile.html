@@ -20,13 +20,13 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                 </div>
                 <div class="modal-body">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                   <div class="upload-profile-pic">                    
                     <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-                    <input type="file" name="image" id="img-inp">
+                    <input type="file" id="img-inp" name="file" accept="image/*" required>
                   </div>  
                   <div class="edit-info">
-                    <input type="text" id="img-url" name="image" >
+                
                     <label for="username">Name</label>
                     <input type="text" id="username" value={{resturantname}}>
                     <label for="username">Phone</label>
@@ -42,21 +42,4 @@
             </div>
           </div>
     </div>
-    <script>
-        function setItemImage() {
-            const itemImg = document.getElementById("item-img");
-            const imgUrlSpace = document.getElementById("img-url");
-            // let input = document.createElement('input');
-            const input = document.getElementById("img-inp");
-            // input.type = 'file';
-            input.onchange = _ => {
-                // you can use this method to get file and perform respective operations
-                        let files =   Array.from(input.files);
-                        var url = URL.createObjectURL(files[0]);
-                        itemImg.src = url;
-                    };
-            // input.click();
-
-        }
-    </script>
 {%endblock%}    
