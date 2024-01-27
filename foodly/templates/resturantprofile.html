@@ -20,23 +20,24 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                 </div>
                 <div class="modal-body">
+                <form method="POST">
                   <div class="upload-profile-pic">
+                    
                     <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
                     <p onclick="setItemImage()">choose picture</p>
                   </div>  
                   <div class="edit-info">
                     <label for="username">Name</label>
                     <input type="text" id="username" value={{resturantname}}>
-                    <label for="address">Address</label>
-                    <input type="text" id="address" value="{{resturantaddress}}">
-                    <label for="phone">Phone</label>
-                    <input type="text" id="phone" value={{resturantphone}}>
+                    <label for="username">Phone</label>
+                    <input type="text" id="username" value={{resturantphone}}>
                   </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
                   <button type="submit" class="btn" style="width: fit-content;">Save changes</button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
