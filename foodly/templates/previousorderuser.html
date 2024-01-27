@@ -1,6 +1,7 @@
 {%extends "index.html"%}
 {%block content%}
 <div class="row">
+    {% for i in range(2) %}
     <div class="card my-4 mx-4 col-md-3" style="width: 18rem;">
         <span class="position-absolute top-0 translate-middle badge rounded-pill bg-success" style="left: 255px;">
             DELIVERED
@@ -17,6 +18,8 @@
           <p class="card-text">January 20, 2024 at 07:52 PM</p>
         </div>
     </div>
+    {% endfor %}
+    {% for i in range(2) %}
     <div class="card my-4 mx-4 col-md-3" style="width: 18rem;">
         <span class="position-absolute top-0 translate-middle badge rounded-pill bg-danger" style="left: 255px;">
             PAYMENT UNSUCCESSFUL
@@ -33,5 +36,6 @@
           <p class="card-text">January 20, 2024 at 07:52 PM</p>
         </div>
     </div>
+    {% endfor %}
 </div>
 {%endblock%}
