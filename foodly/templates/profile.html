@@ -13,6 +13,43 @@
         </div>
     </div>
     <div class="profile-edit">
-        <button class="btn"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                </div>
+                <div class="modal-body">
+                  <div class="upload-profile-pic">
+                    <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
+                    <p onclick="setItemImage()">choose picture</p>
+                  </div>  
+                  <div class="edit-info">
+                    <label for="username">Name</label>
+                    <input type="text" id="username">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn" style="width: fit-content;">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
+    <script>
+        function setItemImage() {
+            const itemImg = document.getElementById("item-img");
+            let input = document.createElement('input');
+            input.type = 'file';
+            input.onchange = _ => {
+                // you can use this method to get file and perform respective operations
+                        let files =   Array.from(input.files);
+                        itemImg.src = URL.createObjectURL(files[0]);
+                    };
+            input.click();
+
+        }
+    </script>
 {%endblock%}    
