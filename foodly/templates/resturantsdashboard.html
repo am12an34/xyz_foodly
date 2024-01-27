@@ -18,6 +18,10 @@
         <img src="../static/images/foodly_logo.png" alt="" style="width: 70%; margin: 20px;">
         <ul style="display: flex; flex-direction: column; padding-left: 0; width: 100%;">
             <li class="sidenav-items">
+                <i class="fa-solid fa-chart-simple ico"></i>
+                <a href="#" style="margin-top: 9px;">Statistics</a>
+            </li>
+            <li class="sidenav-items">
                 <i class="fa-regular fa-clipboard ico"></i>
                 <a href="/resturantsdashboard/addmenu" style="margin-top: 9px;">Add Menu</a>
             </li>
@@ -45,39 +49,19 @@
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="width: 90px; box-shadow: none;"><img src="../static/images/profile-pic.png" alt="" class="profile-pic" style="width: 50%;"></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">See Profile</a></li>
+                      <li><a class="dropdown-item" href="/userprofile">See Profile</a></li>
                       <li><a class="dropdown-item" href="/logout">Logout</a></li>
                     </ul>
                 </div>
             </li>
             <li><i class="fa-regular fa-bell ico-black"></i></li>
         </ul>
+       
+        
     </div>
     <div class="content">
-        <!-- {%block content%}
-        <p>RESTURANTS DASHBOARD</p>
-        {%endblock%} -->
-
-        <div class="admin-dashboard">
-            <div class="toal-order">
-                <h2 style="font-family: 'Poppins', sans-serif;">Total Orders</h2>
-                <hr style="color: #ff633c;"> 
-                <div class="order-analysis">
-                    <div>
-                        <h4 style="font-family: 'Poppins', sans-serif; ">Orders Recieved</h4>
-                        <p style="color: #ff633c; font-size: 1.5rem;">200</p>
-                    </div>
-                    <div>
-                        <h4 style="font-family: 'Poppins', sans-serif;">Successful Orders</h4>
-                        <p style="color: #ff633c; font-size: 1.5rem;">198</p>
-                    </div>
-                    <div>
-                        <h4 style="font-family: 'Poppins', sans-serif;">Success Rate</h4>
-                        <p style="color: #ff633c; font-size: 1.5rem;">99%</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {%block content%}
+        {%endblock%}
         </div>
         <script>
             const showDropdown = () => {
