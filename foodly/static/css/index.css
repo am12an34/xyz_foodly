@@ -431,3 +431,19 @@ body{
     height: fit-content;
     background-color: #ff633c;
 }
+.toal-order{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+}
+.order-analysis{
+    display: flex;
+    justify-content: space-between;
+}
+.order-analysis div{
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

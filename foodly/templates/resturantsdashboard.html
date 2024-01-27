@@ -30,6 +30,10 @@
                 <a href="#">Previous Orders</a>
             </li>
             <li class="sidenav-items">
+                <i class="fa-regular fa-star ico"></i>
+                <a href="#">Reviews</a>
+            </li>
+            <li class="sidenav-items">
                 <i class="fa-solid fa-right-from-bracket ico"></i>
                 <a href="/logout">Log out</a>
             </li>
@@ -50,9 +54,29 @@
         </ul>
     </div>
     <div class="content">
-        {%block content%}
+        <!-- {%block content%}
         <p>RESTURANTS DASHBOARD</p>
-        {%endblock%}
+        {%endblock%} -->
+
+        <div class="admin-dashboard">
+            <div class="toal-order">
+                <h2 style="font-family: 'Poppins', sans-serif;">Total Orders</h2>
+                <div class="order-analysis">
+                    <div>
+                        <h4 style="font-family: 'Poppins', sans-serif;">Orders Recieved</h4>
+                        <p>200</p>
+                    </div>
+                    <div>
+                        <h4 style="font-family: 'Poppins', sans-serif;">Successful Orders</h4>
+                        <p>198</p>
+                    </div>
+                    <div>
+                        <h4 style="font-family: 'Poppins', sans-serif;">Success Rate</h4>
+                        <p>99%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
         <script>
             const showDropdown = () => {
