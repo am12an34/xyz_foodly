@@ -123,7 +123,7 @@
                 <hr>
 
                 <!-- Payment Options with Radio Buttons -->
-                <div class="form-group">
+                <!--<div class="form-group">
                     <label>Select Payment Method:</label>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="prepaidRadio" name="paymentMethod" value="prepaid" class="custom-control-input" checked>
@@ -133,7 +133,7 @@
                         <input type="radio" id="codRadio" name="paymentMethod" value="cod" class="custom-control-input">
                         <label class="custom-control-label" for="codRadio">Cash on Delivery</label>
                     </div>
-                </div>
+                </div>-->
 
 
                 <hr>
@@ -142,7 +142,7 @@
                 <form action="" method="post">
                     <input type="text" name="userid" value="{{userid}}" hidden>
                     <input type="text" name="totalprice" value="{{totalprice}}" hidden>
-                    <button type="submit"  onclick="placeOrder()" class="btn btn-success btn-block">Place Order</button>
+                    <button type="submit"  class="btn btn-success btn-block">Place Order</button>
                 </form>
             </div>
         </div>
@@ -167,6 +167,12 @@
         }
     }
 
+    // const placeOrder = ()=>{
+
+    // }
+ 
+
+ 
 </script>
 </body>
 </html>
