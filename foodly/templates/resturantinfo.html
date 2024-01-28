@@ -11,8 +11,8 @@
             alt="" style="width: 50%;">
     </div>
 </div>
-<h2 class="rest-name">John Resturant</h2>
-<p class="text-default">Rolls, Chinese, Indian</p>
+<h2 class="rest-name">{{resturantname}}</h2>
+<p class="text-default">{{resturantcuisine}}</p>
 <nav class="rest-inside-topnav">
     <ul>
         <li id="overview" onclick="switchResInfo(event)">Overview</li>
@@ -40,15 +40,21 @@
         <div class="order-section">
             <h4 style="font-size: 1.5rem; font-weight: 500;">Order Now</h4>
             <div class="food-category">
-                <div class="menu-item" name="eggroll">
-                    <img src="https://www.jessicagavin.com/wp-content/uploads/2018/01/egg-rolls-10-1200.jpg"
+                {% for menu in all_menus %}
+                <div class="menu-item" name="{{menu.itemname}}">
+                    <img src="{{menu.menuimageurl}}"
                         alt="" class="food-image">
                     <div class="item-info">
+<<<<<<< HEAD
                         <h5 style="margin: 5px 0px;">Egg Roll</h5>
                         <span style="margin: 5px 0px;">4.5 &#9734;</span>
+=======
+                        <h5>{{menu.itemname}}</h5>
+                        <span>4.5 &#9734;</span>
+>>>>>>> fcf77cd301a88457747f7336e72b1497377a9a6c
                         <p class="vote-count">200 votes</p>
-                        <p class="item-price">&#8377; 35</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, harum.</p>
+                        <p class="item-price">&#8377; {{menu.itemprice}}</p>
+                        <p>{{menu.itemdescription}}</p>
                     </div>
                     <div class="add-reduct">
                         <div class="button-add-reduce">
@@ -58,6 +64,7 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
             <div class="proceed-to-payment">
                 <span>Proceed to pay!!!</span>
