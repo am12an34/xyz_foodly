@@ -10,7 +10,7 @@
                     <p style="color: red; font-size: 0.7rem; margin-top: -10px;">image must be less than 100kb</p>
                 </div>
             </div>
-            <form action="" method="post" class="add-menu-form">
+            <form action="" method="post" class="add-menu-form" enctype="multipart/form-data">
                 <label for="img-inp">Upload Menu Image</label>
                 <input type="file" name="file" id="img-inp" accept="image/*" required>
                 <label for="item-name">Enter the name of the item</label>
@@ -19,7 +19,7 @@
                 <input type="number" id="item-price" name="itemprice" required>
                 <label for="item-description">Enter the description of the item</label>
                 <input type="text" id="item-description" name="itemdescription" required>
-                <button type="submit" class="btn" style="background-color: #f16c4c; width: 20%; color: white;">Add Item</button>
+                <button class="btn" type="submit" style="background-color: #f16c4c; width: 20%; color: white;">Add Item</button>
             </form>
         </div>
         <h1 style="margin: 20px 0px;">Menu List</h1>
@@ -43,37 +43,23 @@
                 <div class="order-section">
                     <h4>Order Now</h4>
                     <div class="food-category">
-                        <div class="menu-item" name="eggroll">
-                            <img src="https://www.jessicagavin.com/wp-content/uploads/2018/01/egg-rolls-10-1200.jpg"
+                        {% for menu in all_menus %}
+                        <div class="menu-item" name="{{menu.itemname}}">
+                            <img src="{{menu.menuimageurl}}"
                                 alt="" class="food-image">
                             <div class="item-info">
-                                <h5>Egg Roll</h5>
+                                <h5>{{menu.itemname}}</h5>
                                 <span>4.5 &#9734;</span>
                                 <p class="vote-count">200 votes</p>
-                                <p class="item-price">35 &#8377;</p>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, harum.</p>
+                                <p class="item-price">{{menu.itemprice}} &#8377;</p>
+                                <p>{{menu.itemdescription}}</p>
                             </div>
                             <div class="menu-operation">
-                                <button type="button" class="btn btn-danger" onclick="location.reload()">Delete</button>
-                                <button type="button" class="btn btn-warning" onclick="location.reload()">Out of stock</button>
+                                <button type="submit" class="btn btn-danger" onclick="location.reload()">Delete</button>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>    
-                    <div class="menu-item" name="paratha">
-                        <img src="https://www.jessicagavin.com/wp-content/uploads/2018/01/egg-rolls-10-1200.jpg"
-                            alt="" class="food-image">
-                        <div class="item-info">
-                            <h5>Paratha</h5>
-                            <span>4.5 &#9734;</span>
-                            <p class="vote-count">200 votes</p>
-                            <p class="item-price">10 &#8377;</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, harum.</p>
-                        </div>
-                        <div class="menu-operation">
-                            <button type="button" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-warning">Out of stock</button>
-                        </div>
-                    </div>
                     
                 </div>
             </div>
