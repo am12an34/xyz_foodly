@@ -10,16 +10,16 @@
                     <p style="color: red; font-size: 0.7rem; margin-top: -10px;">image must be less than 100kb</p>
                 </div>
             </div>
-            <form action="" method="post" class="add-menu-form" enctype="multipart/form-data">
+            <form action="" method="post" class="add-menu-form">
                 <label for="img-inp">Upload Menu Image</label>
-                <input type="file" id="img-inp" name="file" accept="image/*" required>
+                <input type="file" name="file" id="img-inp" accept="image/*" required>
                 <label for="item-name">Enter the name of the item</label>
-                <input type="text" name="itemname" id="item-name" required>
+                <input type="text" id="item-name" name="itemname" required>
                 <label for="item-price">Enter the price of the item</label>
-                <input type="text" name="itemprice" id="item-price" required>
+                <input type="text" id="item-price" name="itemprice" required>
                 <label for="item-description">Enter the description of the item</label>
-                <input type="text" name="itemdescription" id="item-description" required>
-                <button class="btn" type="submit" style="background-color: #f16c4c; width: 20%; color: white;">Add Item</button>
+                <input type="text" id="item-description" name="itemdescription" required>
+                <button class="btn" style="background-color: #f16c4c; width: 20%; color: white;">Add Item</button>
             </form>
         </div>
         <h1 style="margin: 20px 0px;">Menu List</h1>
