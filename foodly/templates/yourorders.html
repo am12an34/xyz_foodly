@@ -1,76 +1,126 @@
-{%extends "index.html"%}
-{%block content%}
-<h1 style="font-family: 'Poppins', sans-serif; margin: 25px;">Orders</h1>
-<div class="active-order">
-  <div class="resturant-name-sec">
-    <div class="res-info-active-order">
-      <img src="https://lh3.googleusercontent.com/p/AF1QipMidEEqczw-JoRCZt2kRZmkHrM6SrvGQe1OuCry=s1360-w1360-h1020"
-        alt="" style="width: 10%; border-radius: 5px;">
-      <div style="margin: 5px 20px;">
-        <h3 style="font-family: 'Poppins', sans-serif;">John Resturant</h3>
-        <p style="font-family: 'Poppins', sans-serif;">NIT Agartala, Jirania</p>
-      </div>
-    </div>
-    <div style="margin: 10px 20px;">
-      <span class="badge bg-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Track</span>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content w-fit">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel" style="font-family: 'Poppins', sans-serif;">Order Status</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="stepper">
-                <div class="stepper-icon-step">
-                  <div class="stepper-count" hidden>1</div>
-                  <div class="stepper-check">&#10003;</div>
-                  <div class="stepper-line bg-green"></div>
-                  <div class="stepper-count">2</div>
-                  <div class="stepper-check" hidden>&#10003;</div>
-                  <div class="stepper-line"></div>
-                  <div class="stepper-count">3</div>
-                  <div class="stepper-check" hidden>&#10003;</div>
-                  <div class="stepper-line"></div>
-                  <div class="stepper-count">4</div>
-                  <div class="stepper-check" hidden>&#10003;</div>
-                </div>
-                <div class="stepper-items">
-                  <ul>
-                    <li>Order Confirmed</li>
-                    <li>Preparing Order</li>
-                    <li>Out for Delivery</li>
-                    <li>Delivered</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn" data-bs-dismiss="modal"
-                style="background-color: #ff633c; color: white; font-family: 'Poppins', sans-serif;">Close</button>
-            </div>
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+   
+
+    .container {
+      margin-top: 50px;
+
+    }
+
+    .card {
+      box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+      max-width: 400px; 
+      margin: 0 auto; 
+      border-radius: 0.5rem;
+    }
+
+    #timer {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    #qrCode {
+      width: 100%;
+      max-width: 300px;
+      margin: 20px auto;
+    }
+
+    #uploadButton {
+      margin-top: 20px;
+    }
+    .btn{
+            background-color: #f37355;
+            border: 2px solid #fa6746;
+        }
+        .btn:hover{
+            cursor: pointer;
+            background-color: #ff5630;
+            border: 2px solid #fa6746;
+        }
+        .btn:focus{
+            background-color:#fa6746 ;
+            box-shadow: none;
+            border: 2px solid #fa6746;
+        }
+ 
+        }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <center><h4 class="card-title">PAY NOW</h4><br><h4 class="card-title">Total Amount-₹ {{totalprice}}</h4></center>
+        <hr>
+        <center><div id="timer">01:00</div></center>
+        <hr>
+
+        <!-- QR Code Image -->
+        <center>
+        <img id="qrCode" src="data:image/png;base64,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" alt="QR Code">
+        </center>
+
+        <!-- Upload Payment Confirmation Image -->
+        <div class="custom-file" id="uploadButton">
+          <input type="file" class="custom-file-input" id="paymentImage" accept="image/*">
+          <label class="custom-file-label " for="paymentImage">Choose file</label>
         </div>
+
+        <button class="btn btn-primary mt-3" onclick="submitPayment()">Submit Payment</button>
       </div>
     </div>
   </div>
-  <div class="order-info">
-    <div class="item-list">
-      <p>1 X Egg Roll</p>
-      <p>5 X Paratha</p>
-    </div>
-    <div class="item-price-list">
-      <p>&#8377; 35</p>
-      <p>&#8377; 50</p>
-    </div>
-  </div>
-  <div class="item-total">
-    <div class="item-list">
-      <p>Total</p>
-    </div>
-    <div class="item-price-list">
-      <p>&#8377; 85</p>
-    </div>
-  </div>
-</div>
-{%endblock%}
+
+  <!-- Bootstrap JS and dependencies (Popper.js, jQuery) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Timer logic
+    var countdown =60; // 5 minutes in seconds
+    var timerDisplay = document.getElementById('timer');
+
+    function updateTimer() {
+      var minutes = Math.floor(countdown / 60);
+      var seconds = countdown % 60;
+      timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimer() {
+      updateTimer();
+      var timerInterval = setInterval(function () {
+        countdown--;
+        updateTimer();
+        if (countdown <= 0) {
+          clearInterval(timerInterval);
+          // Add logic for when the timer reaches zero (e.g., redirect or display a message)
+        }
+      }, 1000);
+    }
+
+    startTimer();
+
+    // Upload button customization
+    document.getElementById('paymentImage').addEventListener('change', function (event) {
+      var fileName = event.target.files[0].name;
+      var label = document.querySelector('.custom-file-label');
+      label.textContent = fileName;
+    });
+
+
+  </script>
+  <script>
+    setTimeout(function(){
+        window.location.href = "{{ url_for('yourorders') }}";
+    }, 60*1000);  // 10000 milliseconds = 10 seconds
+</script>
+</body>
+</html>
