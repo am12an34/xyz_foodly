@@ -15,24 +15,24 @@
                 <div style="display: flex;">
                     <div style="display: flex; flex-direction: column;">
                         <label class="input-label" for="email">Enter Your Email id</label>
-                        <input class="input-box" type="email" id="email" style="padding: 2px 90px;" required>
+                        <input class="input-box" type="email" id="email" style="padding: 2px 90px;" name="email" required>
                         <div style="display: {{ block_none }};">
                             <p style="color: red; font-size: 0.7rem; margin-top: -10px;">User already exist</p>
                         </div>
                     </div>
                     <div style="display: flex; flex-direction: column; margin-left: 20px;">
                         <label class="input-label" for="resturant-name">Enter Your Resturant's Name</label>
-                        <input class="input-box" type="text" id="resturant-name" style="padding: 2px 90px;" required>
+                        <input class="input-box" type="text" id="resturant-name" style="padding: 2px 90px;" name="resturantname" required>
                     </div>
                 </div>
                 <label class="input-label" for="resturant-cuisine">Enter Your Resturant's Cuisine</label>
-                <input class="input-box" type="text" id="resturant-cuisine" required>
+                <input class="input-box" type="text" id="resturant-cuisine" name="resturantcuisine" required>
                 <label class="input-label" for="resturant-address">Enter Your Resturant's Address</label>
-                <input class="input-box" type="text" id="resturant-address" required>
+                <input class="input-box" type="text" id="resturant-address" name="resturantaddress" required>
                 <div style="display: flex;">
                     <div style="display: flex; flex-direction: column;">
                         <label class="input-label" for="password">Enter Password</label>
-                        <input class="input-box" type="password" id="password" style="padding: 2px 90px;" required>
+                        <input class="input-box" type="password" id="password" style="padding: 2px 90px;" name="password" required>
                     </div>
                     <div style="display: flex; flex-direction: column; margin-left: 20px;">
                         <label class="input-label" for="cnf-password">Confirm Password</label>
