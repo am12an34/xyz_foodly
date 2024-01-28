@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Orders Checkout</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Poppins', sans-serif;
+        }
+        .checkout-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+        }
+        .order-section,
+        .summary-section {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .item-actions {
+            display: flex;
+            align-items: center;
+        }
+        .item-actions button {
+            margin-left: 10px;
+        }
+        .btn{
+            background-color: #f37355;
+            border: 2px solid #fa6746;
+        }
+        .btn:hover{
+            cursor: pointer;
+            background-color: #ff5630;
+            border: 2px solid #fa6746;
+        }
+        .btn:focus{
+            background-color:#fa6746 ;
+            box-shadow: none;
+            border: 2px solid #fa6746;
+        }
+        .input-box{
+            border: 2px solid #f37355;
+ 
+        }
+        .input-box:focus{
+            border: 2px solid black;
+            box-shadow: none;
+ 
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container checkout-container">
+    <div class="row">
+        <!-- Orders Section -->
+        <div class="col-md-6">
+            <div class="order-section">
+                <h4>Orders</h4>
+                <hr>
+                <!-- Items -->
+                <div id="items">
+                    {% for item in all_items %}
+                    <div class="item" data-price="10">
+                        <span>{{item.item}}</span>
+                        <span class="price">{{item.price}}</span>
+                        <div class="item-actions">
+                            
+                            <span class="quantity">quantity: {{item.quantity}}</span>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+        
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="col-md-6">
+            <div class="summary-section">
+                <h4>Order Summary</h4>
+                <hr>
+
+                <!-- Coupon -->
+                <!-- Coupon -->
+                <div class="form-group">
+                    <label for="coupon">Coupon Code:</label>
+                    <div class="input-group">
+                        <input type="text" id="coupon" class="form-control input-box">
+                        <div class="input-group-append">
+                            <button onclick="applyCoupon()" class="btn btn-primary">Apply Coupon</button>
+                        </div>
+                    </div>
+                    <small id="couponStatus" class="text-muted"></small>
+                </div>
+
+
+                <hr>
+
+                <!-- Bill -->
+                <div>
+                    <h4>Total Amount: ₹<span id="totalAmount">0</span></h4>
+                </div>
+
+                <hr>
+
+                <!-- Payment Options with Radio Buttons -->
+                <div class="form-group">
+                    <label>Select Payment Method:</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="prepaidRadio" name="paymentMethod" value="prepaid" class="custom-control-input" checked>
+                        <label class="custom-control-label" for="prepaidRadio">Online</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="codRadio" name="paymentMethod" value="cod" class="custom-control-input">
+                        <label class="custom-control-label" for="codRadio">Cash on Delivery</label>
+                    </div>
+                </div>
+
+
+                <hr>
+
+                <!-- Order Button -->
+                <button  onclick="placeOrder()" class="btn btn-success btn-block">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function applyCoupon() {
+        var couponInput = document.getElementById('coupon');
+        var couponStatus = document.getElementById('couponStatus');
+        var validCoupon = 'DISCOUNT20';
+
+        if (couponInput.value === validCoupon) {
+            couponStatus.textContent = 'Coupon applied successfully!';
+            couponStatus.style.color = 'green';
+        } else {
+            couponStatus.textContent = 'Invalid coupon. Please enter a valid coupon code.';
+            couponStatus.style.color = 'red';
+        }
+    }
+
+
+    function updateTotalAmount() {
+        var totalAmountElement = document.getElementById('totalAmount');
+        var totalAmount = calculateTotalAmount();
+        totalAmountElement.innerText = totalAmount;
+    }
+
+
+    function calculateTotalAmount() {
+        var items = document.querySelectorAll('.item');
+        var totalAmount = 0;
+
+        items.forEach(function (item) {
+            var price = parseFloat(item.getAttribute('data-price'));
+            var quantity = parseInt(item.querySelector('.quantity').innerText);
+            totalAmount += price * quantity;
+        });
+
+        return totalAmount.toFixed(0);
+    }
+    updateTotalAmount();
+ 
+
+ 
+</script>
+</body>
+</html>
