@@ -51,6 +51,7 @@
     border-color: black;
 }
 .order-details{
+    font-family: 'Poppins', sans-serif;
     margin: 10px 10px;
     padding: 10px 20px;
     border-radius: 10px;
@@ -69,4 +70,7 @@
 .order-details-user-info{
     border-bottom: 1px solid rgba(167, 167, 167, 0.416);
     margin: 10px 20px;
+}
+.resturant-previous-order{
+    font-family: 'Poppins', sans-serif;
 }
