@@ -38,15 +38,13 @@
             </ul>
         </div>
         <div class="order-section">
-            <h4 style="font-size: 1.5rem; font-weight: 500;">Order Now</h4>
+            <h4>Order Now</h4>
             <div class="food-category">
                 {% for menu in all_menus %}
                 <div class="menu-item" name="{{menu.itemname}}">
                     <img src="{{menu.menuimageurl}}"
                         alt="" class="food-image">
                     <div class="item-info">
-                        <h5 style="margin: 5px 0px;">Egg Roll</h5>
-                        <span style="margin: 5px 0px;">4.5 &#9734;</span>
                         <h5>{{menu.itemname}}</h5>
                         <span>4.5 &#9734;</span>
                         <p class="vote-count">200 votes</p>
@@ -66,6 +64,7 @@
             <div class="proceed-to-payment">
                 <span>Proceed to pay!!!</span>
                 <span class="proceed-btn" onclick="sendOrder()">Checkout</span>
+                
             </div>
         </div>
     </div>
@@ -77,6 +76,5 @@
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
         </div>
     </div>
-</div>
 
-{%endblock%}
+    {%endblock%}
