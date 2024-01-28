@@ -139,7 +139,11 @@
                 <hr>
 
                 <!-- Order Button -->
-                <button  onclick="placeOrder()" class="btn btn-success btn-block">Place Order</button>
+                <form action="" method="post">
+                    <input type="text" name="userid" value="{{userid}}" hidden>
+                    <input type="text" name="totalprice" value="{{totalprice}}" hidden>
+                    <button type="submit"  onclick="placeOrder()" class="btn btn-success btn-block">Place Order</button>
+                </form>
             </div>
         </div>
     </div>
@@ -163,23 +167,25 @@
         }
     }
 
+    // const placeOrder = ()=>{
+
+    // }
 
     function updateTotalAmount() {
         var totalAmountElement = document.getElementById('totalAmount');
         var totalAmount = calculateTotalAmount();
-        totalAmountElement.innerText = totalAmount;
+        totalAmountElement.innerHTML = totalAmount;
     }
 
 
     function calculateTotalAmount() {
-        var items = document.querySelectorAll('.item');
+        var prices = document.querySelectorAll('.price');
         var totalAmount = 0;
 
-        items.forEach(function (item) {
-            var price = parseFloat(item.getAttribute('data-price'));
-            var quantity = parseInt(item.querySelector('.quantity').innerText);
-            totalAmount += price * quantity;
-        });
+        for(var price of prices){
+            totalAmount += parseInt(price.innerHTML)
+        }
+        
 
         return totalAmount.toFixed(0);
     }
