@@ -166,33 +166,6 @@
             couponStatus.style.color = 'red';
         }
     }
-
-    // const placeOrder = ()=>{
-
-    // }
-
-    function updateTotalAmount() {
-        var totalAmountElement = document.getElementById('totalAmount');
-        var totalAmount = calculateTotalAmount();
-        totalAmountElement.innerHTML = totalAmount;
-    }
-
-
-    function calculateTotalAmount() {
-        var prices = document.querySelectorAll('.price');
-        var totalAmount = 0;
-
-        for(var price of prices){
-            totalAmount += parseInt(price.innerHTML)
-        }
-        
-
-        return totalAmount.toFixed(0);
-    }
-    updateTotalAmount();
- 
-
- 
 </script>
 </body>
 </html>
