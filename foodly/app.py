@@ -403,10 +403,11 @@ def adminresturants():
         if session['projectadmin'] == True:
             all_resturants=[]
             ar=db.child("resturants").get()
-            for r in ar.each():
-                r.val()["resturantid"]=r.key()
-                r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
-                all_resturants.append(r.val())
+            if ar.val()!=None:
+                for r in ar.each():
+                    r.val()["resturantid"]=r.key()
+                    r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
+                    all_resturants.append(r.val())
                 
             if request.method == 'POST':
                 resturantid=request.form['resturantid']#databse se ura do......
