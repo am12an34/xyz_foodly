@@ -3,7 +3,7 @@
 
 <div class="rest-search">
   <div style="display: flex; justify-content: center;">
-      <input class="search-box-rest" type="text" id="search-box" onkeyup="search()">
+      <input class="search-box-rest" type="text">
       <div><i class="fa-solid fa-magnifying-glass ico rest-search-ico"></i></div>
   </div>
 </div>
@@ -46,42 +46,20 @@
 </div>
 <h2 class="heading">Order now</h2>
 <div class="resturants">
-    <div class="row" id="show-resturants">
-    {% for i in range(8) %}
-    <div class="col-md-3 my-3 resturant-card">
-        <div class="card" style="width: 18rem;">
-            <img src="https://lh3.googleusercontent.com/p/AF1QipMidEEqczw-JoRCZt2kRZmkHrM6SrvGQe1OuCry=s1360-w1360-h1020" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Jhon Resturant{{ i+1}}</h5>
-                <span class="rating-span">4.5 &#9734;</span>
-                <a href="/resturants/resturantinfo" class="btn" style="background-color: #f0643e; color: white; width: 42%;">See Menu</a>
-            </div>
+    <div class="row row-cols-4 g-3">
+    {% for resturant in all_resturants %}
+    <div class="col">
+    <div class="card" style="width: 18rem;">
+        <img src="{{resturant.resturantimageurl}}" class="card-img-top" alt="..." >
+        <div class="card-body">
+            <h5 class="card-title">{{ resturant.resturantname }}</h5>
+            <span class="rating-span">4.5 &#9734;</span>
+            <a href="/resturants/{{resturant.resturantid}}" class="btn" style="background-color: #f0643e; color: white; width: 42%;">See Menu</a>
         </div>
     </div>
+  </div>
     {% endfor %}
   </div>
   </div>
-  <script>
-    const search = ()=>{
-                const searchData = document.getElementById("search-box").value.toLowerCase();
-                const resturants = document.getElementsByClassName("resturant-card");
-                const getResult = ()=>{
-                    for(resturant of resturants){
-                        if(searchData!=""){
-                            if(!resturant.querySelector(".card-title").innerHTML.toLowerCase().includes(searchData)){
-                                console.log(resturant.querySelector(".card-title").innerHTML)
-                                console.log(resturant)
-                                resturant.hidden = true;
-                            }else{
-                                resturant.hidden = false;
-                            }
-                        }else{
-                            resturant.hidden = false;
-                        }
-                    } 
-                }
-                getResult()
-            }
-  </script>
 
 {%endblock%}
