@@ -1,87 +1,54 @@
 {%extends "index.html"%}
 {%block content%}
 <div class="profile-section">
-  <div style="display: flex; ">
-    <div class="profile-pic-section">
-      <img src="../static/images/profile-pic.png" alt="">
+    <div style="display: flex; ">
+        <div class="profile-pic-section">
+            <img src="{{userprofileimage}}" alt="">
+        </div>
+        <div class="profile-user-info">
+            <h2>{{username}}</h2>
+            <h4 style="font-size: 1rem; color: #ffb4a1; font-weight: 600;">Total Number of orders</h4>
+            <p style="font-size: 1rem; font-weight: 600;">20</p>
+        </div>
     </div>
-    <div class="profile-user-info">
-      <h2>{{username}}</h2>
-      <h4 style="font-size: 1rem; color: #ffb4a1; font-weight: 600;">Total Number of orders</h4>
-      <p style="font-size: 1rem; font-weight: 600;">20</p>
-    </div>
-  </div>
-  <div class="profile-edit">
-    <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i>
-      Edit</button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-          </div>
-          <div class="modal-body">
-            <div class="upload-profile-pic">
-              <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-            </div>
-            <div class="edit-info">
-              <form>
-                <input type="file" name="file" accept="image/*" id="img-inp" style="border: 0px;">
-                <div style="display: flex; flex-direction: column;">
-                  <label for="username">Name</label>
-                  <input type="text" id="username" name="username">
+    <div class="profile-edit">
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
                 </div>
-              </form>
+                <div class="modal-body">
+                  <div class="upload-profile-pic">
+                    <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
+                  </div>  
+                  <div class="edit-info">
+                    <form method="POST" enctype="multipart/form-data">
+                        <center>
+                        <input type="file" name="file" accept="image/*" id="img-inp">
+                        </center>
+                        <label for="username">Name</label><br>
+                        <input type="text" id="username" name="username">
+
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn" style="width: fit-content;">Save changes</button>
+                </div>
+                </form>
+              </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn" style="width: fit-content;">Save changes</button>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</div>  
-<div class="user-address">
-  <div class="add-address">
-    <div style="font-size: 1.2rem; font-weight: 500;">
-      Add New Address
-    </div>
-    <div>
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal1">&plus;</button>
-      <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel1">Add Your Address</h5>
-            </div>
-            <div class="modal-body">
-              <form action="" method="post" style="display: flex; flex-direction: column;">
-                <label for="userAddress">Enter Your Address</label>
-                <input type="text" id="userAddress" name="address" style="border: 1px solid gray; border-radius: 5px; height: 35px; margin: 10px 0px;">
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="font-size: 1.1rem; padding: 5px 10px;">Close</button>
-              <button type="button" class="btn btn-primary" style="font-size: 1.1rem; padding: 5px 10px;">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="address-line">
-    <p>R-120, Block - 2, RNT Hostel, NIT Agartala</p>
-    <button>Delete</button>
-  </div>
-</div>
-  <script>
-    const itemImg = document.getElementById("item-img");
-    let input = document.getElementById("img-inp");
-    input.onchange = _ => {
-      let files = Array.from(input.files);
-      itemImg.src = URL.createObjectURL(files[0]);
-    };
-  </script>
-  {%endblock%}
+    <script>
+            const itemImg = document.getElementById("item-img");
+            let input = document.getElementById("img-inp");
+            input.onchange = _ => {
+                        let files =   Array.from(input.files);
+                        itemImg.src = URL.createObjectURL(files[0]);
+                    };
+    </script>
+{%endblock%}    
