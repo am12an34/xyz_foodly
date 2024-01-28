@@ -50,3 +50,19 @@
     border-width: 1px;
     border-color: black;
 }
+.order-details{
+    margin: 10px 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.order-details-total{
+    display: flex;
+    width: 100%; 
+    justify-content: space-around;
+}
+.order-details-controlls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

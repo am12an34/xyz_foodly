@@ -50,70 +50,10 @@
         </ul>
     </div>
     <div class="content">
-<<<<<<< HEAD
         <!-- {%block content%}
-        {%endblock%} -->
-        <div class="profile-section">
-            <div style="display: flex; ">
-                <div class="profile-pic-section">
-                    <img src="../static/images/profile-pic.png" alt="">
-                </div>
-                <div class="profile-user-info">
-                    <h2>{{resturantname}}</h2>
-                    <p><i class="fa-solid fa-house"></i> &nbsp;{{resturantaddress}}</p>
-                    <p><i class="fa-solid fa-phone"></i>&nbsp;{{resturantphone}}</p>
-                </div>
-            </div>
-            <div class="profile-edit">
-                <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModa2"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                <div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                        </div>
-                        <div class="modal-body">
-                        <form method="POST">
-                          <div class="upload-profile-pic">                    
-                            <img id="item-img" class="item-pic" src="../static/images/dummy-item-pic.png" alt="">
-                            <!-- <input type="file" name="image" id="img-inp"> -->
-                            <p onclick="setItemImage()">Change Profile Picture</p>
-                          </div>  
-                          <div class="edit-info">
-                            <label for="username">Name</label>
-                            <input type="text" id="username" value={{resturantname}}>
-                            <label for="username">Phone</label>
-                            <input type="text" id="username" value={{resturantphone}}>
-                          </div>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn" style="width: fit-content;">Save changes</button>
-                        </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-            <!-- <script>
-                function setItemImage() {
-                    const itemImg = document.getElementById("item-img");
-                    const imgInp = document.getElementById("img-inp");
-                    imgInp.onchange = evt => {
-                        const [file] = imgInp.files
-                        if (file) {
-                            itemImg.src = URL.createObjectURL(file)
-                        }
-                    }
-        
-                }
-            </script> -->
-=======
-        {%block content%}
         <p>RESTURANTS DASHBOARD</p>
-        {%endblock%}
+        {%endblock%} -->
         
->>>>>>> c6ba1130e2f8f5bc0128daf7efeb9d8206bb3470
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
