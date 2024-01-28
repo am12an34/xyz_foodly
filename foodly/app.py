@@ -59,6 +59,8 @@ def index():
             return redirect(url_for('resturants')) 
         elif session['admin'] == True:
             return redirect(url_for('resturantindex'))
+        else:
+            return redirect(url_for('admindashboard'))
     else:
         return redirect(url_for('landing'))
 
@@ -72,6 +74,7 @@ def resturants():
             for r in ar.each():
                 r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
                 all_resturants.append(r.val())
+                for rr in all_resturants:
             return render_template('resturants.html',all_resturants=all_resturants) 
         else:
             return redirect(url_for('landing'))
@@ -89,8 +92,14 @@ def userprofile():
                     if file.filename != '':
                         st.child("users/" + session['user']+"/"+"profile.png").put(file)
                 username = request.form['username']
+                address = request.form['address']
+                phone = request.form['phone']
                 if len(username)!=0:
                     db.child("users").child(session["user"]).update({"username": username})
+                if len(address)!=0:
+                    db.child("users").child(session["user"]).update({"useraddress": address})
+                if len(phone)!=0:
+                    db.child("users").child(session["user"]).update({"userphone": phone})
 
             userprofileimage=st.child("users/" + session['user']+"/"+"profile.png").get_url(None)
 
@@ -112,6 +121,18 @@ def previousorderuser():
     else:
         return redirect(url_for('login'))
 
+@app.route("/payment")
+def payment():
+    if "user" in session:
+        if session["admin"] == False:
+            totalprice=request.args.get('totalprice')
+            return render_template('payment.html',totalprice=totalprice)
+
+        else:
+            return redirect(url_for('landing'))
+    else:
+        return redirect(url_for('login'))
+
 @app.route("/yourorders")
 def yourorders():
     if "user" in session:
@@ -122,15 +143,54 @@ def yourorders():
     else:
         return redirect(url_for('login'))
 
-@app.route("/resturants/resturantinfo", methods=['GET', 'POST'])
-def resturantsinfo():
+@app.route("/usercheckout",methods=['POST','GET'])
+def usercheckout():
+    if "user" in session:
+        if session['admin'] == False:
+            userid=session['user']
+            if request.method == 'POST':
+                totalprice=request.form['totalprice']
+                return redirect(url_for('payment',totalprice=totalprice))
+                
+            
+            ao=db.child("users").child(session["user"]).child("yourorders").get()
+            all_items=[]
+            for o in ao.each():
+                #print(o.val(),"usercheckout")
+                all_items.append(o.val())
+            totalprice=0
+            for pr in all_items:
+                totalprice+=float(pr['price'])*float(pr['quantity'])
+
+            return render_template('usercheckout.html',all_items=all_items,userid=userid,totalprice=totalprice) 
+        else:
+            return redirect(url_for('landing'))
+    else:
+        return redirect(url_for('login'))
+
+
+@app.route("/resturants/<resturantid>", methods=['GET', 'POST'])
+def resturantsinfo(resturantid):
     if "user" in session:
         if session['admin'] == False:
             if request.method == 'POST':
                 json_data = request.get_json()
-                print("Received JSON data:", json_data)
+               
+                db.child("users").child(session['user']).child("yourorders").set(json_data)
+            #menu show karunga
+            rn=db.child("resturants").child(resturantid).child("resturantname").get()
+            rc=db.child("resturants").child(resturantid).child("resturantcuisine").get()
+            all_menus=[]
+            am=db.child("resturants").child(resturantid).child("resturantmenu").get()
+            
+            if am.val()!=None:
+                for m in am.each():
+                    
+                    m.val()["menuimageurl"]=st.child("resturants/"+resturantid+"/menu/"+m.key()+".png").get_url(None)
+                    all_menus.append(m.val())
                 
-            return render_template('resturantinfo.html')
+
+            return render_template('resturantinfo.html',all_menus=all_menus,resturantname=rn.val(),resturantcuisine=rc.val())
         else:
             return redirect(url_for('landing'))
     else:
@@ -149,7 +209,7 @@ def login():
             user = Auth.sign_in_with_email_and_password(email, password)
             session['user'] = user['localId']
             session['admin'] = False
-            print(session)
+            
             
             return redirect(url_for('index'))
         except:
@@ -169,10 +229,10 @@ def register():
 
         try:
             user = Auth.create_user_with_email_and_password(email, password)
-            print(user)
+            
             session['user'] = user['localId']  
             session['admin'] = False
-            user_data = {"username": name}
+            user_data = {"username": name,"userphone":"","useraddress":""}
             db.child("users").child(session['user']).set(user_data)
             return redirect(url_for('index'))
 
@@ -182,6 +242,23 @@ def register():
     return render_template('register.html',block_none="none")
 
 #-----------------------------------------------------------------------resturantadmin
+@app.route("/resturantactiveorders")
+def resturantactiveorders():
+
+    if "user" in session:     
+        if session['admin'] == True:
+            ao=db.child("users").child(session["user"]).child("yourorders").get()
+            all_items=[]
+            for o in ao.each():
+                #print(o.val(),"usercheckout")
+                all_items.append(o.val())
+            return render_template('resturantactiveorders.html') 
+        else:
+            return redirect(url_for('landing'))
+    else:
+        return redirect(url_for('landing'))
+
+
 @app.route("/resturantsdashboard")
 def resturantsstats():
 
@@ -206,15 +283,20 @@ def resturantaddmenu():
                 if 'file' in request.files:
                     file = request.files['file']
                     st.child("resturants/" + session['user']+"/menu/"+itemname+".png").put(file)
-                db.child("resturants").child(session['user']).child("resturantmenu").child(itemname).set({"itemprice": itemprice,"itemdescription": itemdescription})
-            '''all_resturants=[]
-                                                ar=db.child("resturants").get()
-                                                for r in ar.each():
-                                                    r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
-                                                    all_resturants.append(r.val())'''
+                db.child("resturants").child(session['user']).child("resturantmenu").child(itemname).set({"itemname":itemname,"itemprice": itemprice,"itemdescription": itemdescription})
+            all_menus=[]
+            am=db.child("resturants").child(session['user']).child("resturantmenu").get()
+            
+            if am.val()!=None:
+                for m in am.each():
+                   
+                    m.val()["menuimageurl"]=st.child("resturants/"+session['user']+"/menu/"+m.key()+".png").get_url(None)
+                    all_menus.append(m.val())
+              
 
 
-            return render_template('addmenu.html') 
+
+            return render_template('addmenu.html',all_menus=all_menus) 
         else:
             return redirect(url_for('landing'))
     else:
@@ -280,7 +362,7 @@ def resturantsregister():
                     #print(user)
                     session['user'] = user['localId']
                     session['admin'] = True
-                    resturant_data = {"resturantname": resturantname,"resturantcuisine": resturantcuisine,"resturantaddress":resturantaddress}
+                    resturant_data = {"resturantid":session['user'],"resturantname": resturantname,"resturantcuisine": resturantcuisine,"resturantaddress":resturantaddress}
                     db.child("resturants").child(session['user']).set(resturant_data)
                     return redirect(url_for('resturantindex'))
                 except :
@@ -294,8 +376,7 @@ def resturantslgoin():
         if request.method == 'POST':
                 email = "admin."+request.form['email']
                 password = request.form['password']
-                print(email)
-                print(password)
+          
                 try:
                     user = Auth.sign_in_with_email_and_password(email, password)
                     session['user'] = user['localId']
@@ -327,7 +408,7 @@ def adminresturants():
                 r.val()["resturantid"]=r.key()
                 r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
                 all_resturants.append(r.val())
-                print(r.val())
+               
             if request.method == 'POST':
                 resturantid=request.form['resturantid']#databse se ura do......
                 #db.child("resturants").child(resturantid).remove()
@@ -356,13 +437,14 @@ def adminlgoin():
         if request.method == 'POST':
                 email = "projectadmin."+request.form['email']
                 password = request.form['password']
-                print(email)
-                print(password)
+            
                 try:
                     user = Auth.sign_in_with_email_and_password(email, password)
                     session['user'] = user['localId']
                     session['projectadmin'] = True
-                    print(session)
+                    session['admin']='TrueAdmin'
+
+                  
                     return redirect(url_for('admindashboard'))
                 except :
                     return render_template('adminlogin.html',block_none="block")
