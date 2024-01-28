@@ -1,6 +1,7 @@
 from flask import*
 import pyrebase
 from functools import wraps
+
 #from adminapp import register
 app = Flask(__name__)
 
@@ -136,7 +137,15 @@ def payment():
 def yourorders():
     if "user" in session:
         if session['admin'] == False:
-            return render_template('yourorders.html') 
+            ao=db.child("users").child(session["user"]).child("yourorders").get()
+            all_items=[]
+            for o in ao.each():
+                #print(o.val(),"usercheckout")
+                all_items.append(o.val())
+            totalprice=0
+            for pr in all_items:
+                totalprice+=float(pr['price'])*float(pr['quantity'])
+            return render_template('yourorders.html',totalprice=totalprice,all_items=all_items) 
         else:
             return redirect(url_for('landing'))
     else:
