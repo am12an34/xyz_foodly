@@ -74,7 +74,6 @@ def resturants():
             for r in ar.each():
                 r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
                 all_resturants.append(r.val())
-                for rr in all_resturants:
             return render_template('resturants.html',all_resturants=all_resturants) 
         else:
             return redirect(url_for('landing'))
@@ -175,7 +174,7 @@ def resturantsinfo(resturantid):
         if session['admin'] == False:
             if request.method == 'POST':
                 json_data = request.get_json()
-               
+                
                 db.child("users").child(session['user']).child("yourorders").set(json_data)
             #menu show karunga
             rn=db.child("resturants").child(resturantid).child("resturantname").get()
@@ -229,7 +228,7 @@ def register():
 
         try:
             user = Auth.create_user_with_email_and_password(email, password)
-            
+           
             session['user'] = user['localId']  
             session['admin'] = False
             user_data = {"username": name,"userphone":"","useraddress":""}
@@ -289,10 +288,10 @@ def resturantaddmenu():
             
             if am.val()!=None:
                 for m in am.each():
-                   
+                    
                     m.val()["menuimageurl"]=st.child("resturants/"+session['user']+"/menu/"+m.key()+".png").get_url(None)
                     all_menus.append(m.val())
-              
+                
 
 
 
@@ -376,7 +375,7 @@ def resturantslgoin():
         if request.method == 'POST':
                 email = "admin."+request.form['email']
                 password = request.form['password']
-          
+              
                 try:
                     user = Auth.sign_in_with_email_and_password(email, password)
                     session['user'] = user['localId']
@@ -408,7 +407,7 @@ def adminresturants():
                 r.val()["resturantid"]=r.key()
                 r.val()["resturantimageurl"]=st.child("resturants/" + r.key()+"/"+"profile.png").get_url(None)
                 all_resturants.append(r.val())
-               
+                
             if request.method == 'POST':
                 resturantid=request.form['resturantid']#databse se ura do......
                 #db.child("resturants").child(resturantid).remove()
@@ -437,14 +436,13 @@ def adminlgoin():
         if request.method == 'POST':
                 email = "projectadmin."+request.form['email']
                 password = request.form['password']
-            
+               
                 try:
                     user = Auth.sign_in_with_email_and_password(email, password)
                     session['user'] = user['localId']
                     session['projectadmin'] = True
                     session['admin']='TrueAdmin'
 
-                  
                     return redirect(url_for('admindashboard'))
                 except :
                     return render_template('adminlogin.html',block_none="block")
