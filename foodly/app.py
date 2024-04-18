@@ -8,11 +8,11 @@ app = Flask(__name__)
 app.secret_key = 'Fo**-+8/'
 #pyrebaseconfiguration/firebase
 firebase_config = {
-    "apiKey": "AIzaSyBE8OPJ0Z_yVcJTDlN4kKX_yLx3SvYmrrQ",
-    "authDomain": "foodly-a5923.firebaseapp.com",
-    "databaseURL": "https://foodly-a5923-default-rtdb.firebaseio.com",
+    "apiKey": "",
+    "authDomain": "",
+    "databaseURL": "",
     "projectId": " ",
-    "storageBucket": "foodly-a5923.appspot.com",
+    "storageBucket": "",
     "messagingSenderId": " ",
     "appId": " ",
 }
